@@ -20149,6 +20149,8 @@ with pkgs;
 
   ### SCIENCE/IMAGING
 
+  mrtrix3 = callPackage ../applications/science/biology/mrtrix { };
+
   stir = callPackage ../applications/science/imaging/stir { };
 
   ### SCIENCE/MATH
