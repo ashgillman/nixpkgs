@@ -7165,6 +7165,8 @@ in {
     inherit pythonOlder;
   };
 
+  pydotplus = callPackage ../development/python-modules/pydotplus { };
+
   pypoppler = buildPythonPackage rec {
     name = "pypoppler-${version}";
     version = "0.12.2";
