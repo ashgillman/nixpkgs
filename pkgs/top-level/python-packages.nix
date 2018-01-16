@@ -10538,6 +10538,26 @@ in {
     };
   });
 
+  pydicom = buildPythonPackage rec {
+    name = "pydicom-${version}";
+    version = "0.9.9";
+
+    src = pkgs.fetchurl {
+      url = "https://pypi.python.org/packages/source/p/pydicom/${name}.tar.gz";
+      sha256 = "0si32zv7aj2nhnvlnkwpkg5bc4vlqdslirnsjmg0x6wx66b2if09";
+    };
+
+    propagatedBuildInputs = with self; [ numpy ];
+    doCheck = false; # ASCII encoding currently breaks
+
+    meta = {
+      homepage = https://github.com/darcymason/pydicom;
+      description = "Pure python package for DICOM medical file reading and writing";
+      license = licenses.mit;
+      maintainers = with maintainers; [ ashgillman ];
+    };
+  };
+
   pydispatcher = buildPythonPackage (rec {
     version = "2.0.5";
     name = "pydispatcher-${version}";
