@@ -20147,6 +20147,10 @@ with pkgs;
     licenseAccepted = (config.sc2-headless.accept_license or false);
   };
 
+  ### SCIENCE/IMAGING
+
+  stir = callPackage ../applications/science/imaging/stir { };
+
   ### SCIENCE/MATH
 
   almonds = pythonPackages.callPackage ../applications/science/math/almonds { };
