@@ -18188,8 +18188,6 @@ with pkgs;
 
   mrbayes = callPackage ../applications/science/biology/mrbayes { };
 
-  mrtrix3 = qt5.callPackage ../applications/science/biology/mrtrix { };
-
   minc_tools = callPackage ../applications/science/biology/minc-tools { };
 
   ncbi_tools = callPackage ../applications/science/biology/ncbi-tools { };
@@ -18211,6 +18209,10 @@ with pkgs;
   varscan = callPackage ../applications/science/biology/varscan/default.nix { };
 
   bwa = callPackage ../applications/science/biology/bwa/default.nix { };
+
+  ### SCIENCE/IMAGING
+
+  mrtrix3 = qt5.callPackage ../applications/science/imaging/mrtrix { };
 
   ### SCIENCE/MATH
 
