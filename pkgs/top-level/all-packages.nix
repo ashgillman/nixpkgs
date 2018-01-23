@@ -20149,7 +20149,7 @@ with pkgs;
 
   ### SCIENCE/IMAGING
 
-  mrtrix3 = callPackage ../applications/science/biology/mrtrix { };
+  mrtrix3 = qt5.callPackage ../applications/science/biology/mrtrix { };
 
   stir = callPackage ../applications/science/imaging/stir { };
 
