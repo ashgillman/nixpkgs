@@ -18188,7 +18188,7 @@ with pkgs;
 
   mrbayes = callPackage ../applications/science/biology/mrbayes { };
 
-  mrtrix3 = callPackage ../applications/science/biology/mrtrix { };
+  mrtrix3 = qt5.callPackage ../applications/science/biology/mrtrix { };
 
   minc_tools = callPackage ../applications/science/biology/minc-tools { };
 
