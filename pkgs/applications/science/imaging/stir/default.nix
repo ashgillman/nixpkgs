@@ -11,13 +11,13 @@
 let
   nixpkgsVer = builtins.readFile <nixpkgs/.version>;
 in stdenv.mkDerivation rec {
-  name = "stir-3.0";
+  name = "stir-3.1-pre";
 
   src = fetchFromGitHub {
     owner = "UCL";
     repo = "STIR";
-    rev = "9ef3b73";
-    sha256 = "1l6dn0hxq4jp1niyrklclvlc7hddgn7jkyc60b50k06n6zf2sbb8";
+    rev = "a470096"; # master: 18/01/23
+    sha256 = "0g0aw4alj2ci4gj6g623zylw9hs1i9s52dvay3g76szfya4fw70x";
   };
 
   buildInputs = [ boost cmake itk /*openmpi*/ ];
@@ -30,7 +30,6 @@ in stdenv.mkDerivation rec {
     "-DBUILD_SWIG_PYTHON=ON"
   ];
   preConfigure = ''
-    rm -rf build
     cmakeFlags="-DPYTHON_DEST=$out/${pythonPackages.python.sitePackages} $cmakeFlags"
   '';
   postInstall = ''
