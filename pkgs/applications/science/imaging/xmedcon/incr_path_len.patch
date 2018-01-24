@@ -1,0 +1,26 @@
+diff --git a/source/m-defs.h b/source/m-defs.h
+index af752c3..630bca2 100644
+--- a/source/m-defs.h
++++ b/source/m-defs.h
+@@ -110,7 +110,7 @@
+ #define MDC_INPUT_NORM_STYLE   1
+ #define MDC_INPUT_ECAT_STYLE   2
+ 
+-#define MDC_MAX_PATH  256
++#define MDC_MAX_PATH  1024
+ #define MDC_MAX_LIST  256
+ 
+ #define MDC_YES    MDC_ONE
+diff --git a/source/m-intf.h b/source/m-intf.h
+index ef6a7ee..a7eadae 100644
+--- a/source/m-intf.h
++++ b/source/m-intf.h
+@@ -40,7 +40,7 @@
+ #define MDC_INTF_SUPP_VERS   "3.3"
+ #define MDC_INTF_SUPP_DATE   "1996:09:24"
+ 
+-#define MDC_INTF_MAXKEYCHARS 256
++#define MDC_INTF_MAXKEYCHARS 1024
+ 
+ #define MDC_INTF_UNKNOWN 0
+ 

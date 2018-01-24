@@ -20165,6 +20165,10 @@ with pkgs;
     boost = boost.override { stdenv = stdenvGCC49; };
   };
 
+  ### SCIENCE/IMAGING
+
+  xmedcon = callPackage ../applications/science/imaging/xmedcon { };
+
   ### SCIENCE/MATH
 
   almonds = pythonPackages.callPackage ../applications/science/math/almonds { };
