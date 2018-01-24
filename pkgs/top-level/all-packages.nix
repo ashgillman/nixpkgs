@@ -20054,8 +20054,6 @@ with pkgs;
     inherit (perlPackages) GetoptTabular MNI-Perllib;
   };
 
-  dcm2niix = callPackage ../applications/science/biology/dcm2niix { };
-
   diamond = callPackage ../applications/science/biology/diamond { };
 
   ecopcr = callPackage ../applications/science/biology/ecopcr { };
@@ -20148,6 +20146,8 @@ with pkgs;
   };
 
   ### SCIENCE/IMAGING
+
+  dcm2niix = callPackage ../applications/science/imaging/dcm2niix { };
 
   mrtrix3 = qt5.callPackage ../applications/science/imaging/mrtrix { };
 
