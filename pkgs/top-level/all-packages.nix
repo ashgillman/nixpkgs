@@ -18214,6 +18214,8 @@ with pkgs;
 
   dcm2niix = callPackage ../applications/science/imaging/dcm2niix { };
 
+  mrtrix3 = qt5.callPackage ../applications/science/imaging/mrtrix { };
+
   stir = callPackage ../applications/science/imaging/stir { };
 
   ### SCIENCE/MATH
