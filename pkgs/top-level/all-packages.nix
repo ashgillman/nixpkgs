@@ -20153,6 +20153,18 @@ with pkgs;
 
   stir = callPackage ../applications/science/imaging/stir { };
 
+  ### SCIENCE/IMAGING
+
+  mirorr = let stdenvGCC49 = overrideCC stdenv gcc49;
+  in callPackage ../applications/science/imaging/mirorr {
+    stdenv = stdenvGCC49;
+    itk = itk.override {
+      stdenv = stdenvGCC49;
+      vtk = vtk.override { stdenv = stdenvGCC49; };
+    };
+    boost = boost.override { stdenv = stdenvGCC49; };
+  };
+
   ### SCIENCE/MATH
 
   almonds = pythonPackages.callPackage ../applications/science/math/almonds { };
