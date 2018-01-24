@@ -18212,6 +18212,8 @@ with pkgs;
 
   ### SCIENCE/IMAGING
 
+  dcm2niix = callPackage ../applications/science/imaging/dcm2niix { };
+
   stir = callPackage ../applications/science/imaging/stir { };
 
   ### SCIENCE/MATH
