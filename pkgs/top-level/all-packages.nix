@@ -18162,8 +18162,6 @@ with pkgs;
 
   bcftools = callPackage ../applications/science/biology/bcftools { };
 
-  dcm2niix = callPackage ../applications/science/biology/dcm2niix { };
-
   diamond = callPackage ../applications/science/biology/diamond { };
 
   ecopcr = callPackage ../applications/science/biology/ecopcr { };
@@ -18211,6 +18209,10 @@ with pkgs;
   varscan = callPackage ../applications/science/biology/varscan/default.nix { };
 
   bwa = callPackage ../applications/science/biology/bwa/default.nix { };
+
+  ### SCIENCE/IMAGING
+
+  dcm2niix = callPackage ../applications/science/imaging/dcm2niix { };
 
   ### SCIENCE/MATH
 
