@@ -18210,6 +18210,10 @@ with pkgs;
 
   bwa = callPackage ../applications/science/biology/bwa/default.nix { };
 
+  ### SCIENCE/IMAGING
+
+  xmedcon = callPackage ../applications/science/imaging/xmedcon { };
+
   ### SCIENCE/MATH
 
   arpack = callPackage ../development/libraries/science/math/arpack { };
