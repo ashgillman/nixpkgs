@@ -18214,6 +18214,16 @@ with pkgs;
 
   dcm2niix = callPackage ../applications/science/imaging/dcm2niix { };
 
+  mirorr = let stdenvGCC49 = overrideCC stdenv gcc49;
+  in callPackage ../applications/science/imaging/mirorr {
+    stdenv = stdenvGCC49;
+    itk = itk.override {
+      stdenv = stdenvGCC49;
+      vtk = vtk.override { stdenv = stdenvGCC49; };
+    };
+    boost = boost.override { stdenv = stdenvGCC49; };
+  };
+
   mrtrix3 = qt5.callPackage ../applications/science/imaging/mrtrix { };
 
   stir = callPackage ../applications/science/imaging/stir { };
