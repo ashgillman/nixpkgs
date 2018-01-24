@@ -18228,6 +18228,8 @@ with pkgs;
 
   stir = callPackage ../applications/science/imaging/stir { };
 
+  xmedcon = callPackage ../applications/science/imaging/xmedcon { };
+
   ### SCIENCE/MATH
 
   arpack = callPackage ../development/libraries/science/math/arpack { };
