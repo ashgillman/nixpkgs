@@ -7454,6 +7454,8 @@ in {
 
   pysrt = callPackage ../development/python-modules/pysrt { };
 
+  python-utils = callPackage ../development/python-modules/python-utils { };
+
   pytools = callPackage ../development/python-modules/pytools { };
 
   pytun = buildPythonPackage rec {
