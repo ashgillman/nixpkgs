@@ -9674,7 +9674,10 @@ with pkgs;
 
   isso = callPackage ../servers/isso { };
 
-  itk = callPackage ../development/libraries/itk { };
+  itk413 = callPackage ../development/libraries/itk/itk413.nix { };
+  itk411 = callPackage ../development/libraries/itk/itk411.nix { };
+  itk49 = callPackage ../development/libraries/itk/itk49.nix { };
+  itk = itk413;
 
   jasper = callPackage ../development/libraries/jasper { };
 
@@ -20158,9 +20161,9 @@ with pkgs;
   mirorr = let stdenvGCC49 = overrideCC stdenv gcc49;
   in callPackage ../applications/science/imaging/mirorr {
     stdenv = stdenvGCC49;
-    itk = itk.override {
+    itk = itk49.override {
       stdenv = stdenvGCC49;
-      vtk = vtk.override { stdenv = stdenvGCC49; };
+      withVtk = false;
     };
     boost = boost.override { stdenv = stdenvGCC49; };
   };
