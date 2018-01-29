@@ -8678,7 +8678,9 @@ with pkgs;
     stdenv = llvmPackages_4.stdenv;
   };
 
-  itk = callPackage ../development/libraries/itk { };
+  itk411 = callPackage ../development/libraries/itk/itk411.nix { };
+  itk49 = callPackage ../development/libraries/itk/itk49.nix { };
+  itk = itk411;
 
   jasper = callPackage ../development/libraries/jasper { };
 
@@ -18217,9 +18219,9 @@ with pkgs;
   mirorr = let stdenvGCC49 = overrideCC stdenv gcc49;
   in callPackage ../applications/science/imaging/mirorr {
     stdenv = stdenvGCC49;
-    itk = itk.override {
+    itk = itk49.override {
       stdenv = stdenvGCC49;
-      vtk = vtk.override { stdenv = stdenvGCC49; };
+      withVtk = false;
     };
     boost = boost.override { stdenv = stdenvGCC49; };
   };
