@@ -1,13 +1,8 @@
 { stdenv
 , fetchFromGitHub
-, python2Packages
-, eigen
-, mesa
-, qmake
-, qtscript
-, qtsvg
-, x11
-, zlib
+, python, numpy
+, eigen , mesa , qmake , qtscript , qtsvg , x11 , zlib
+, justMrview ? false
 }:
 
 stdenv.mkDerivation rec {
@@ -25,8 +20,8 @@ stdenv.mkDerivation rec {
     qmake
   ];
   buildInputs = [
-    python2Packages.python
-    python2Packages.numpy
+    python
+    numpy
     eigen
     mesa
     qtscript
@@ -50,11 +45,17 @@ stdenv.mkDerivation rec {
     else
       export NUMBER_OF_PROCESSORS="$NIX_BUILD_CORES"
     fi
-    ./build
+    ./build ${if justMrview then "release/bin/mrview" else ""}
   '';
   installPhase = ''
     mkdir -p $out
     mv release/{bin,lib} $out
+  '';
+  preFixup = ''
+    for bin in $out/bin/*; do  # */
+      echo Patching $bin
+      patchelf --set-rpath "${stdenv.lib.makeLibraryPath buildInputs}" $bin
+    done
   '';
 
   meta = with stdenv.lib; {
