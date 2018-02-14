@@ -18212,7 +18212,14 @@ with pkgs;
 
   ### SCIENCE/IMAGING
 
-  mrtrix3 = qt5.callPackage ../applications/science/imaging/mrtrix { };
+  mrtrix3 = qt5.callPackage ../applications/science/imaging/mrtrix {
+    inherit (python2Packages) python numpy;
+  };
+
+  mrview = qt5.callPackage ../applications/science/imaging/mrtrix {
+    inherit (python2Packages) python numpy;
+    justMrview = true;
+  };
 
   ### SCIENCE/MATH
 
