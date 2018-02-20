@@ -18212,7 +18212,9 @@ with pkgs;
 
   ### SCIENCE/IMAGING
 
-  stir = callPackage ../applications/science/imaging/stir { };
+  stir = callPackage ../applications/science/imaging/stir {
+    inherit (pythonPackages) python numpy;
+  };
 
   ### SCIENCE/MATH
 

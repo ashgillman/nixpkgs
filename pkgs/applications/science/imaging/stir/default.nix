@@ -1,11 +1,7 @@
 { stdenv
 , fetchFromGitHub
-, cmake
-, boost
-, itk
-#, openmpi
-, pythonPackages
-, swig
+, cmake , boost , itk , swig
+, buildPython ? true, python, numpy
 }:
 
 let
@@ -21,7 +17,8 @@ in stdenv.mkDerivation rec {
   };
 
   buildInputs = [ boost cmake itk /*openmpi*/ ];
-  propagatedBuildInputs = [ swig ] ++ ( with pythonPackages; [ python numpy ] );
+  propagatedBuildInputs = [ swig ]
+    ++ stdenv.lib.optional buildPython [ python numpy ];
 
   cmakeFlags = [
     "-DGRAPHICS=PGM"
@@ -29,8 +26,8 @@ in stdenv.mkDerivation rec {
     "-DSTIR_OPENMP=${if stdenv.isDarwin then "OFF" else "ON"}"
     "-DBUILD_SWIG_PYTHON=ON"
   ];
-  preConfigure = ''
-    cmakeFlags="-DPYTHON_DEST=$out/${pythonPackages.python.sitePackages} $cmakeFlags"
+  preConfigure = stdenv.lib.optionalString buildPython ''
+    cmakeFlags="-DPYTHON_DEST=$out/${python.sitePackages} $cmakeFlags"
   '';
   postInstall = ''
     # add scripts to bin
