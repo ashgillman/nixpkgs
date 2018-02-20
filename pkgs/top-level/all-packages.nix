@@ -18228,7 +18228,9 @@ with pkgs;
 
   mrtrix3 = qt5.callPackage ../applications/science/imaging/mrtrix { };
 
-  stir = callPackage ../applications/science/imaging/stir { };
+  stir = callPackage ../applications/science/imaging/stir {
+    inherit (pythonPackages) python numpy;
+  };
 
   xmedcon = callPackage ../applications/science/imaging/xmedcon { };
 
