@@ -20161,7 +20161,9 @@ with pkgs;
     justMrview = true;
   };
 
-  stir = callPackage ../applications/science/imaging/stir { };
+  stir = callPackage ../applications/science/imaging/stir {
+    inherit (pythonPackages) python numpy;
+  };
 
   ### SCIENCE/IMAGING
 
