@@ -33,29 +33,37 @@ stdenv.mkDerivation rec {
   EIGEN_CFLAGS = "-isystem ${eigen}/include/eigen3";
   dontAddPrefix = true;
   enableParallelBuilding = true;
+
+  # NB: MRtrix doesn't use standard configure and make, but custom Python scripts
+
   # We need qmake, but don't actually use qmakeConfigurePhase
   configurePhase = ''
     runHook preConfigure
+
     patchShebangs .
     LD=$CXX ./configure
+
+    runHook postConfigure
   '';
   buildPhase = ''
+    runHook preBuild
+
     if [ -z "$enableParallelBuilding" ]; then
       export NUMBER_OF_PROCESSORS="1"
     else
       export NUMBER_OF_PROCESSORS="$NIX_BUILD_CORES"
     fi
     ./build ${if justMrview then "release/bin/mrview" else ""}
+
+    runHook postBuild
   '';
   installPhase = ''
+    runHook preInstall
+
     mkdir -p $out
     mv release/{bin,lib} $out
-  '';
-  preFixup = ''
-    for bin in $out/bin/*; do  # */
-      echo Patching $bin
-      patchelf --set-rpath "${stdenv.lib.makeLibraryPath buildInputs}" $bin
-    done
+
+    runHook postInstall
   '';
 
   meta = with stdenv.lib; {
