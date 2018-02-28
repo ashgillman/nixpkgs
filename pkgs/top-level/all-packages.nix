@@ -8680,6 +8680,7 @@ with pkgs;
 
   itk411 = callPackage ../development/libraries/itk/itk411.nix { };
   itk49 = callPackage ../development/libraries/itk/itk49.nix { };
+  itk47 = callPackage ../development/libraries/itk/itk47.nix { };
   itk = itk411;
 
   jasper = callPackage ../development/libraries/jasper { };
