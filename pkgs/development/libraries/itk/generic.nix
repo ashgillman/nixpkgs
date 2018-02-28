@@ -1,7 +1,7 @@
 { stdenv, fetchurl, fetchpatch, cmake, libX11, libuuid, xz, vtk
 , withReview ? true
 , withVtk ? true
-, version, sha256, ...
+, version, sha256, extraBuildInputs ? [], extraCMakeFlags ? [], ...
 }:
 
 assert withVtk -> vtk != null;
@@ -10,7 +10,7 @@ with stdenv.lib;
 with builtins;
 
 stdenv.mkDerivation {
-  name = "itk-${version}";
+  name = "itk${if withVtk then "-vtk" else ""}${if withReview then "-rev" else ""}-${version}";
 
   src = fetchurl {
     inherit sha256;
@@ -34,12 +34,14 @@ stdenv.mkDerivation {
     "-DModule_ITKIOTransformMINC=ON"
     "-DModule_ITKVtkGlue=${if withVtk then "ON" else "OFF"}"
     "-DModule_ITKReview=${if withReview then "ON" else "OFF"}"
-  ];
+  ] ++ extraCMakeFlags;
 
   enableParallelBuilding = true;
 
   nativeBuildInputs = [ cmake xz ];
-  buildInputs = [ libX11 libuuid ] ++ optional withVtk [ vtk ];
+  buildInputs = [ libX11 libuuid ]
+    ++ extraBuildInputs
+    ++ optional withVtk [ vtk ];
 
   meta = {
     description = "Insight Segmentation and Registration Toolkit";

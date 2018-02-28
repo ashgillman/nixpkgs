@@ -9677,6 +9677,7 @@ with pkgs;
   itk413 = callPackage ../development/libraries/itk/itk413.nix { };
   itk411 = callPackage ../development/libraries/itk/itk411.nix { };
   itk49 = callPackage ../development/libraries/itk/itk49.nix { };
+  itk47 = callPackage ../development/libraries/itk/itk47.nix { };
   itk = itk413;
 
   jasper = callPackage ../development/libraries/jasper { };
