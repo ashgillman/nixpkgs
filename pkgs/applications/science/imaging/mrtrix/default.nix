@@ -60,8 +60,9 @@ stdenv.mkDerivation rec {
   installPhase = ''
     runHook preInstall
 
-    mkdir -p $out
-    mv release/{bin,lib} $out
+    install -Dt $out/bin release/bin/*
+    install -Dt $out/share/applications mrtrix-mrview.desktop
+    cp -r release/lib $out/lib
 
     runHook postInstall
   '';
