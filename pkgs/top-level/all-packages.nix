@@ -20176,6 +20176,7 @@ with pkgs;
       withVtk = false;
     };
     boost = boost.override { stdenv = stdenvGCC49; };
+    inherit (pythonPackages) python nipype bootstrapped-pip wheel;
   };
 
   ### SCIENCE/IMAGING
