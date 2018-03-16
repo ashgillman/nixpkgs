@@ -18225,6 +18225,7 @@ with pkgs;
       withVtk = false;
     };
     boost = boost.override { stdenv = stdenvGCC49; };
+    inherit (pythonPackages) python nipype bootstrapped-pip wheel;
   };
 
   mrtrix3 = qt5.callPackage ../applications/science/imaging/mrtrix {
