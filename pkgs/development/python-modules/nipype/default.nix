@@ -38,12 +38,12 @@ buildPythonPackage rec {
 
   doCheck = false;  # fails with TypeError: None is not callable
   checkInputs = [ which ];
-  buildInputs = [ pytest mock ];  # required in installPhase
   propagatedBuildInputs = [
     click
     dateutil
     funcsigs
     future
+    mock
     networkx
     nibabel
     numpy
@@ -51,6 +51,7 @@ buildPythonPackage rec {
     prov
     psutil
     pydot
+    pytest
     scipy
     simplejson
     traits
