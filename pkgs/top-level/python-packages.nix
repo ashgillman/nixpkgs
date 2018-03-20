@@ -1712,6 +1712,8 @@ in {
     };
   };
 
+  dipy = callPackage ../development/python-modules/dipy {};
+
   debian = buildPythonPackage rec {
     name = "${pname}-${version}";
     pname = "python-debian";
