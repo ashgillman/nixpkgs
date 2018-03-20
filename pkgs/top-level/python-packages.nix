@@ -1234,6 +1234,8 @@ in {
 
   cycler = callPackage ../development/python-modules/cycler { };
 
+  dipy = callPackage ../development/python-modules/dipy {};
+
   cysignals = callPackage ../development/python-modules/cysignals { };
 
   cypari2 = callPackage ../development/python-modules/cypari2 { };
