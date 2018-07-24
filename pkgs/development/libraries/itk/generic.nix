@@ -1,7 +1,8 @@
 { stdenv, fetchurl, fetchpatch, cmake, libX11, libuuid, xz, vtk
 , withReview ? true
 , withVtk ? true
-, version, sha256, extraBuildInputs ? [], extraCMakeFlags ? [], ...
+, version, sha256
+, extraBuildInputs ? [], extraCMakeFlags ? [], extraPatches ? [], ...
 }:
 
 assert withVtk -> vtk != null;
@@ -17,13 +18,7 @@ stdenv.mkDerivation {
     url = "mirror://sourceforge/itk/InsightToolkit-${version}.tar.xz";
   };
 
-  # Clang 4 dislikes signed comparisons of pointers against integers. Should no longer be
-  # necessary after ITK 4.11.
-  patches = optional (compareVersions version "4.11.0" == 0) [
-    (fetchpatch {
-      url    = "https://github.com/InsightSoftwareConsortium/ITK/commit/d1407a55910ad9c232f3d241833cfd2e59024946.patch";
-      sha256 = "0h851afkv23fwgkibjss30fkbz4nkfg6rmmm4pfvkwpml23gzz7s";
-    }) ];
+  patches = extraPatches;
 
   cmakeFlags = [
     "-DBUILD_TESTING=OFF"
