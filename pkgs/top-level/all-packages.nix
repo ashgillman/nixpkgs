@@ -20168,15 +20168,9 @@ with pkgs;
 
   ### SCIENCE/IMAGING
 
-  mirorr = let stdenvGCC49 = overrideCC stdenv gcc49;
-  in callPackage ../applications/science/imaging/mirorr {
-    stdenv = stdenvGCC49;
-    itk = itk49.override {
-      stdenv = stdenvGCC49;
-      withVtk = false;
-    };
-    boost = boost.override { stdenv = stdenvGCC49; };
-    inherit (pythonPackages) python nipype bootstrapped-pip wheel;
+  mirorr = callPackage ../applications/science/imaging/mirorr {
+    # inherit (pythonPackages) nipype bootstrapped-pip;
+    withNipypeInterface = false;
   };
 
   ### SCIENCE/IMAGING

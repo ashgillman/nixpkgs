@@ -3,7 +3,7 @@
 , boost
 , cmake
 , itk
-, withNipypeInterface ? true, python, nipype, bootstrapped-pip, wheel
+, withNipypeInterface ? true, nipype ? null, bootstrapped-pip ? null
 }:
 
 let
@@ -11,19 +11,12 @@ let
 in stdenv.mkDerivation rec {
   name = "mirorr";
 
-  src = if withNipypeInterface
-    then fetchFromGitHub {
-      owner = "ashgillman";
-      repo = name;
-      rev = "db9c9d3";
-      sha256 = "0paby0m5hkrfj8wjz3a6rq9df8kk6nkw2n34lzyj4qfcl27gq81c";
-    }
-    else fetchFromGitHub {
-      owner = "aehrc";
-      repo = name;
-      rev = "1d4b1506613129a566fdb8532d3031c3c29cc626";
-      sha256 = "1gv1akl1fqayz46w3cch00akk5gm532rajq05967qysr6wqxma4r";
-    };
+  src = fetchFromGitHub {
+    owner = "aehrc";
+    repo = name;
+    rev = "72994db";
+    sha256 = "02a4jp7dg12zb15zy5d5ilhpw225xc8iqylmvx9nnxmwz7fg1698";
+  };
 
   buildInputs = [
     boost
@@ -55,7 +48,7 @@ in stdenv.mkDerivation rec {
 
   meta = with stdenv.lib; {
     description = "Multimodal Image Registration using blOck-matching and Robust Regression";
-    homepage = https://www.nitrc.org/projects/dcm2nii;
+    homepage = http://aehrc.github.io/Mirorr/;
     license = licenses.mit; # CSIRO license, based on MIT/BSD
     maintainers = [ maintainers.ashgillman ];
     platforms = platforms.all;
