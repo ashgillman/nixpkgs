@@ -12784,6 +12784,10 @@ in {
     };
   };
 
+  simpleitk = callPackage ../development/python-modules/SimpleITK {
+    inherit (pkgs) cmake git gtest itk lua5_1 swig tcl tk;
+  };
+
   simplejson = callPackage ../development/python-modules/simplejson { };
 
   simpleldap = buildPythonPackage rec {
